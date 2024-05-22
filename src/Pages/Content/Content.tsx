@@ -10,11 +10,14 @@ const Content = () => {
   const [fav, setFav] = useState<{ [key: string]: boolean }>({});
   const [text, setText] = useState("");
 
-  const handleEnterKeypress = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputText = event.target.value;
+  const handleEnterKeypress = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    const inputText = event.currentTarget.value;
     setText(inputText);
     if (inputText === "") {
       setData(data);
+      console.log("sss");
     } else {
       const filterMovies = data.filter((movie) => {
         return movie.title.toLowerCase().includes(inputText.toLowerCase());
@@ -57,7 +60,9 @@ const Content = () => {
             className="h-[25px] w-[80%] bg-transparent outline-none text-white"
             value={text}
             onChange={(event) => setText(event.target.value)}
-            onKeyPress={handleEnterKeypress}
+            onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) =>
+              handleEnterKeypress(event)
+            }
           />
         </div>
         <div>

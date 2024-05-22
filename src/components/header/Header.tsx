@@ -1,7 +1,5 @@
 import logo from "../../../public/assets/logo.png";
-import { MdLocalMovies } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
-import { RiTvFill } from "react-icons/ri";
 import { TiThLargeOutline } from "react-icons/ti";
 import { FaRegUser } from "react-icons/fa6";
 import { useState } from "react";
