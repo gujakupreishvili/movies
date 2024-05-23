@@ -12,9 +12,9 @@ export default  function Header(){
      setLogOut(!logout)
   }
   return(
-    <header className=" flex items-center justify-between py-[20px] px-[16px] bg-[#161D2F] ">
+    <header className=" flex items-center justify-between py-[20px] px-[16px] bg-[#161D2F]  lg:flex-col lg:justify-start lg:w-[96px] lg:ml-[15px] lg:rounded-[7px] mt-[20px] lg:mb-[40px]">
      <img src={logo} alt="" />
-     <div className=" flex items-center gap-[15px]">
+     <div className=" flex items-center gap-[15px] lg: flex-col lg:mt-[74px] lg:mb-[50px]">
      <TiThLargeOutline className="h-[22px] w-[30px] text-white" />
      <FaRegBookmark  className="h-[22px] w-[30px] text-[#5A698F]"/>
      </div>

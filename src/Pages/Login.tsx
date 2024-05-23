@@ -21,6 +21,7 @@ export default function Login() {
         await login(auth, values.loginemail, values.loginpassword);
       } catch (error) {
         console.error("Login error:", error);
+        alert("something")
       }
     },
     validationSchema: loginValidationSchema,
