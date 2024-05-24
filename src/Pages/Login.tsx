@@ -21,13 +21,12 @@ export default function Login() {
         await login(auth, values.loginemail, values.loginpassword);
       } catch (error) {
         console.error("Login error:", error);
-        alert("something")
       }
     },
     validationSchema: loginValidationSchema,
   });
 
-  
+
 
   const login = async (auth: any, loginemail: string, loginpassword: any) => {
     try {
@@ -36,7 +35,7 @@ export default function Login() {
         loginemail,
         loginpassword
       );
-      
+
       navigate("/home");
       const user = userCredential.user;
       console.log("User logged in:", user);

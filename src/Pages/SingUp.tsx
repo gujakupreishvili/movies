@@ -1,15 +1,20 @@
 import logo from "../.././public/assets/logo.png";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { useFormik } from "formik";
 import { signUpValidationSchema } from "../utils/validationschema";
 
 export default function SignUp() {
+  const navigation = useNavigate();
   const initialValues = {
     email: "",
     password: "",
     password2: "",
+  };
+
+  const handleLink = () => {
+   return navigation("/login", {});
   };
 
   const formik = useFormik({
@@ -50,7 +55,7 @@ export default function SignUp() {
           <h1 className="pt-[24px] pb-[40px] text-[32px] text-white font-normal">
             Sign Up
           </h1>
-          <form onSubmit={handleSubmit}>
+          <form>
             <input
               type="email"
               name="email"
@@ -93,14 +98,15 @@ export default function SignUp() {
                 {errors.password2}
               </p>
             )}
-            <Link to="/login">
-              <button
-                type="submit"
-                className="mt-[16px] bg-[#FC4747] h-[48px] text-white rounded-[6px] mb-[26px] text-center  w-[280px]"
-              >
-                Create an account
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="mt-[16px] bg-[#FC4747] h-[48px] text-white rounded-[6px] mb-[26px] text-center  w-[280px]"
+              onClick={() => {
+                handleLink(); handleSubmit()
+              }}
+            >
+              Create an account
+            </button>
           </form>
           <p className="text-white font-normal pb-[26px] text-[15px] w-[100%] text-center">
             Already have an account?

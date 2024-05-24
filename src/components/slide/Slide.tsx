@@ -1,4 +1,4 @@
-import {SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 export default function Slider({ item }: any) {
   return (
     <>

@@ -4,8 +4,12 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Header from "../../components/header/Header";
 import { Movie } from "../../interface/types";
-import Slider from "../../components/slide/Slide";
+
 import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Content = () => {
   const [data, setData] = useState<Movie[]>([]);
@@ -72,17 +76,24 @@ const Content = () => {
             <h1 className="mt-[26px] text-white text-[20px] pb-[16px]">
               Trending
             </h1>
-            <div className="flex gap-[31px] w-full xl:w-[41.8%]">
+            <div className=" w-[100%] lg:w-[1024px]">
               <Swiper
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={10}
-                navigation={true}
+                navigation
                 modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-                autoplay={true}
                 className="mySwiper2"
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
               >
-                {data.slice(0, 8).map((item) => (
-                  <Slider item={item} />
+                {data.slice(0, 5).map((item) => (
+                  <SwiperSlide key={item.id}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt={item.title}
+                    className="w-[300px] h-[165px] rounded-[10px]"
+                  />
+                </SwiperSlide>
                 ))}
               </Swiper>
             </div>
