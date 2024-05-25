@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./Pages/SingUp.tsx";
 import Login from "./Pages/Login.tsx";
 import Content from "./Pages/Content/Content.tsx";
-import { Fav } from "./Pages/favorites/fav.tsx";
+import { Fav } from "./Pages/favourite/fav.tsx";
 
 const router = createBrowserRouter([
   {
