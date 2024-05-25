@@ -55,7 +55,7 @@ export default function SignUp() {
           <h1 className="pt-[24px] pb-[40px] text-[32px] text-white font-normal">
             Sign Up
           </h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               name="email"

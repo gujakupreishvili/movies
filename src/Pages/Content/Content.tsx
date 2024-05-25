@@ -7,9 +7,9 @@ import { Movie } from "../../interface/types";
 
 import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Content = () => {
   const [data, setData] = useState<Movie[]>([]);
@@ -23,7 +23,6 @@ const Content = () => {
     setText(inputText);
     if (inputText === "") {
       setData(data);
-      console.log("sss");
     } else {
       const filterMovies = data.filter((movie) => {
         return movie.title.toLowerCase().includes(inputText.toLowerCase());
@@ -47,17 +46,23 @@ const Content = () => {
 
     getData();
   }, []);
-
+  const [cart, setCart] = useState<Movie[]>([]);
   const handleAddButtonClick = (movie: Movie) => {
+
     setFav((prevFav) => {
       return { ...prevFav, [movie.id]: !prevFav[movie.id] };
     });
+    if (!cart.find((item) => item.id === movie.id)) {
+      setCart((prevCart) => [...prevCart, movie]);
+    } else {
+      setCart((prevCart) => prevCart.filter((item) => item.id !== movie.id));
+    }
   };
 
   return (
     <>
       <div className="flex flex-col lg:flex-row">
-        <Header />
+        <Header cart={cart} />
         <div className="mt-[27px] px-[16px]">
           <div className="flex items-center gap-[19px]">
             <IoSearch className="w-[24px] h-[24px] text-white" />
@@ -88,12 +93,12 @@ const Content = () => {
               >
                 {data.slice(0, 5).map((item) => (
                   <SwiperSlide key={item.id}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt={item.title}
-                    className="w-[300px] h-[165px] rounded-[10px]"
-                  />
-                </SwiperSlide>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.title}
+                      className="w-[300px] h-[165px] rounded-[10px]"
+                    />
+                  </SwiperSlide>
                 ))}
               </Swiper>
             </div>
